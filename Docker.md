@@ -1,6 +1,7 @@
 # Pawsey Nimbus HPC Docker Containers Introduction
 Craig Duncan
 5 March 2019 (draft)
+This note requires review for currency.
 
 # Overview
 
@@ -156,8 +157,13 @@ DockerBuilder[https://docs.docker.com/engine/reference/builder/]
 BestPractices[https://docs.docker.com/develop/develop-images/dockerfile_best-practices/]
 
 	“When building an image, Docker steps through the instructions in your Dockerfile, executing each in the order specified. As each instruction is examined, Docker looks for an existing image in its cache that it can reuse, rather than creating a new (duplicate) image.” (cheche can be turned off)
-	DockerFiles may include commands like ADD, COPY, ENTRYPOINT, FROM, ARG, RUN, CMD, LABEL,
-	EXPOSE, ENV. " all these commands are to be listed (i.e. written) successively, inside a single plain text file(i.e. Dockerfile), in the order you would like them performed (i.e. executed) by the docker daemon to build an image."
+
+DockerFiles may include commands like ADD, COPY, ENTRYPOINT, FROM, ARG, RUN, CMD, LABEL,
+EXPOSE, ENV. 
+
+	"All these commands are to be listed (i.e. written) successively, inside a single plain text file(i.e. Dockerfile), in the order you would like them performed (i.e. executed) by the docker daemon to build an image."
+(https://www.digitalocean.com/community/tutorials/docker-explained-using-dockerfiles-to-automate-building-of-images)
+nb 2013 - may be deprecated.
 
 MAINTAINER is the author of the image. RUN is followed by a command line instruction, as you would
 enter at command line. ENTRYPOINT is where the container will start. It is ok to put this as last command.
