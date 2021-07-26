@@ -154,6 +154,35 @@ ssh-add ~/.ssh/SCG.pem
 
 if you are adding an identity, from a locally generated key, you just add the filename with the private key name.
 
+## Issues with SSH permissions
+
+Check your key permissions are set to the correct permissions (Pawsey notes at one stage said 700 but 600 is needed).
+
+chmod 600 ~/.ssh/id_rsa
+
+This also says chmod 600:
+
+[Pawsey_Access](https://pawseysc.github.io/using-nimbus/04-access-and-use-instance/index.html)
+
+If you have an SSH key pair through the Nimbus dashboard, you may instead want to try creating the SSH key on your local machine, then importing the public key into Nimbus. The SSH key pair can be generated locally with the command "ssh-keygen". Be sure to ONLY import the public key on Nimbus; the private key must remain where it is.
+
+[PawseySupport_SSHAccess](https://support.pawsey.org.au/documentation/display/US/Common+Issues#CommonIssues-SSHAccess-permissiondenied)
+
+Within the instance creation menus (where you import keys) it says this:
+
+```
+From a Linux system, generate the key pair with the ssh-keygen command:
+
+ssh-keygen -t rsa -f cloud.key
+
+This command generates a pair of keys: a private key (cloud.key) and a public key (cloud.key.pub).
+```
+
+You may have to relaunch instance (e.g. with Ubuntu 19.10) to get a public IP address showing for the instance
+Then tried try to login again (with existing keys already there for project)
+
+ssh -i ~/.ssh/SCG1 ubuntu@your.ip.address.0
+
 # Data Storage setup - mount volumes ready for use on a running instance.
 
 Three steps:
