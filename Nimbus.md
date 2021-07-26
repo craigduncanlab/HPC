@@ -50,13 +50,19 @@ key aspects:
 | Snapshot & Image | a snapshot is a copy of your Root Disk storage you create before terminating your instance. You can launch this image later as a new instance (useful for booting a fully configured virtual machine with all required applications pre-installed) |
 | Volume & Object Storage | similar to an external hard drive you attach and detach to one or multiple instances (useful for big and important data or fully configured virtual machines).|
 
-# Nimbus portal web page
+# Nimbus Supercomputer portal 
 
-The Nimbus dashboard is at https://nimbus.pawsey.org.au Open this URL now in a browser window, you will see the login window (below). As shown, for “domain”, enter ‘pawsey’ and your user name and password.
+The Nimbus dashboard is accessed through the main Nimbus login page
 
-The VM doesn't set up passwords.  However, you will secure with a public [lock] and private [key] system.  The private key is a .pem file.
+[Nimbus Login](https://nimbus.pawsey.org.au) 
+
+Open this URL now in a browser window, you will see the login window. 
+
+For “domain”, enter ‘pawsey’ and your user name and password.
 
 # PEM file
+
+The VM doesn't set up passwords.  However, you will secure with a public [lock] and private [key] system.  The private key is a .pem file.
 
 Privacy enhanced mail file.  It's one of the encrypted formats.
 it may contain some or all of the key chain and/or several certificates.
@@ -69,14 +75,7 @@ RFC1421-4 define it. [RFC1421](https://tools.ietf.org/html/rfc1421])
 
 See [WhatIsAPEMfile](https://serverfault.com/questions/9708/what-is-a-pem-file-and-how-does-it-differ-from-other-openssl-generated-key-file)
 
-## Storing .pem files ****VIP****
-
 "Store your private key in a safe place! Losing your private key means losing every access to your instances. Not even the Nimbus support can give you access to your instances if you have lost your private key."
-
-If the login is going to be the same, this would mean several people have the .pem key.
-
-Is it possible to have another group for the VM so that :
-(a) the SSH key for login is different to the key for each individual to login to the other section?  (That would mean two keys, two layers of security)
 
 # Setting up the Instance
 
@@ -100,11 +99,9 @@ The instance configuration option 'SSH Access' will automatically connect the pr
 
 Each virtual instance (VI) will be given a unique IP address and PORT address on that IP machine.
 
-Each SSH (secure shell connection) is for a virtual machine, over port 22, so SSH login details ensure security of the machine.  If people are sharing logins for a single machine, it will facilitate easier access for the group but there may be some vulnerability if people work on the same virtual machine but don't have clear delineation of their own project resources.
+Each SSH (secure shell connection) is for a virtual machine, over port 22, so SSH login details ensure security of the machine.  
 
-To do:
-1. Ensure shared (team resources) are clearly defined
-2. Explore with Pawsey how to keep project information separate (e.g. the IO virtual hardware setup?)
+Do not share logins.
 
 ## Nimbus Instance "Flavor" (flavour is an OpenStack concept)
 
@@ -167,7 +164,9 @@ Three steps:
 
 # Stage 3 - install applications, libraries etc
 
-## Optional: use docker containers to make setup/maintenance easier
+## Optional
+
+Use docker containers to make setup/maintenance easier
 
 # Stage 4 - take a snapshot of image as setup
 
