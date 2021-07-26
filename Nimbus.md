@@ -16,6 +16,8 @@ General Pawsey Resources:
 
 [Pawsey_UsingNimbus](https://pawseysupercomputing.github.io/using-nimbus/)
 
+[Pawsey_KeyPairs](https://pawseysupercomputing.github.io/using-nimbus/04-making-keypairs/index.html)
+
 [Pawsey_SecurityGroup](https://pawseysupercomputing.github.io/using-nimbus/05-simple-security-groups-and-networking/index.html)
 
 [Pawsey_LaunchNimbusInstance](https://pawseysupercomputing.github.io/using-nimbus/06-launch-an-instance/index.html)
@@ -60,14 +62,18 @@ Open this URL now in a browser window, you will see the login window.
 
 For “domain”, enter ‘pawsey’ and your user name and password.
 
-# PEM file
+# Key pairs for secure access to OpenStack systems
+
+What are key pairs?  Each connection made from a remote client computer using SSH (secure shell) requires a public/private key encryption pair to be created, preferably using the RSA protocol (not DSA) for linux servers.    
+
+The purpose of the key pairs is to authenticate the login to an instance from a particular computer without needing the Project owner to provide the usual username and password for the Project. The holder of the private key of the authorised ‘key pair’ are, in effect, pre-authorised to gain access to the Nimbus instance directly for SSH purposes.
+
+Significantly, the OpenStack software uses Cloud-Init, which restricts the ssh connection to one key pair (do not assume you can have multiple public keys used for this purpose per instance).
+
+Creating and saving the public key requires cooperation from the Project owner who administers the Project and its instances (who will import or save the public key).  Alternatively the Project owner will create both the keys in the key pair using the Nimbus Dashboard (‘nova’) and then save the private key to their own or the instance user’s computer.   This option is less secure than having the person wanting the SSH login to supply the public key.
 
 The VM doesn't set up passwords.  However, you will secure with a public [lock] and private [key] system.  The private key is a .pem file.
-
-Privacy enhanced mail file.  It's one of the encrypted formats.
-it may contain some or all of the key chain and/or several certificates.
-
-RFC1421-4 define it. [RFC1421](https://tools.ietf.org/html/rfc1421])
+RFC1421-4 defines it. [RFC1421](https://tools.ietf.org/html/rfc1421])
 
 "This document defines message encryption and authentication
    procedures, in order to provide privacy-enhanced mail (PEM) services
@@ -103,6 +109,10 @@ Each SSH (secure shell connection) is for a virtual machine, over port 22, so SS
 
 Do not share logins.
 
+The default security and connection setup (“default” security group in the OpenStack API) does not allow remote SSH connections (i.e. from computers outside the cluster network).
+
+In order to allow remote SSH connections, another security group must be added in the Dashboard. Within that group, you then need to specify a rule that permits SSH connections via TCP on Port 22, from any IP address.  Pawsey have a predefined group that does this, called "SSH Access" – just select this as the new Security Group.  When this is done, you should have 2 security groups: ‘default’ and something named ‘ssh’ or similar.
+
 ## Nimbus Instance "Flavor" (flavour is an OpenStack concept)
 
 There's a 5GB default storage area, which relates to the virtual machine running an operating system, rather than the storage device for data work.  The secondary storage will be setup once the instance is live, so just choose a defalt option for now.
@@ -116,6 +126,10 @@ Since Pawsey appears to be using OpenStack, this is also a bit of background on 
 The web based setup is hiding some of the CLI commands from users.
 
 ## Network and login information
+
+```
+Pawsey requires you to select both networks, and the router.  Most likely, you’ll create an IP4 private network, DHCP enabled, on Google public DNS from routers that Pawsey allows you to select through its administration system.  This will then be expanded by adding a ‘floating IP’ address that will allow remote connections (e.g. through SSH, if permitted).
+```
 
 You may need to login to the web portal, and choose 'networks' from instance to see the public IP allocation.
 
@@ -191,11 +205,4 @@ Three steps:
 * Format  (command line mkfs command : `sudo fdisk -l /dev/vdc`)
 * Mount (two steps: mkdir data and then `sudo mount /dev/vdc`)
 
-# Stage 3 - install applications, libraries etc
-
-## Optional
-
-Use docker containers to make setup/maintenance easier
-
-# Stage 4 - take a snapshot of image as setup
 
