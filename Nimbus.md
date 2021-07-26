@@ -13,14 +13,21 @@ These notes help getting started on a Nimbus instance, if you already have an ac
 General Pawsey Resources:
 
 **Pawsey Nimbus Docs**
+
 [Pawsey_UsingNimbus](https://pawseysupercomputing.github.io/using-nimbus/)
+
 [Pawsey_SecurityGroup](https://pawseysupercomputing.github.io/using-nimbus/05-simple-security-groups-and-networking/index.html)
+
 [Pawsey_LaunchNimbusInstance](https://pawseysupercomputing.github.io/using-nimbus/06-launch-an-instance/index.html)
+
 [Pawsey_AttachingStorage](https://pawseysupercomputing.github.io/using-nimbus/07-attaching-storage/index.html)
 
 **PawseySupportDocs**
+
 [PawseySupport_CreateInstance](https://support.pawsey.org.au/documentation/display/US/Create+a+Nimbus+Instance)
+
 [PawseySupport_AccessInstance](https://support.pawsey.org.au/documentation/display/US/Access+and+Use+Your+Nimbus+Instance)
+
 [PawseySupport_Network](https://support.pawsey.org.au/documentation/display/US/Create+a+Nimbus+Instance#CreateaNimbusInstance-Selectthenetwork)
 
 
