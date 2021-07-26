@@ -52,7 +52,7 @@ key aspects:
 
 # Nimbus Supercomputer portal 
 
-The Nimbus dashboard is accessed through the main Nimbus login page
+The Nimbus dashboard is accessed through the main Nimbus login page.  It is an example of the 'OpenStack' HPC administration system.   Once you are familiar with this, working with Nimbus instances in the future will be easier.
 
 [Nimbus Login](https://nimbus.pawsey.org.au) 
 
